@@ -15,8 +15,10 @@ export class CharacterService {
     ){}
 
     async addCharacter(payload:CreateCharacter){
-        let location = await this.locationRepository.addLocation(payload.location)
-        payload.location = location
+        if(payload.location && Object.keys(payload.location).length !== 0){
+            let location = await this.locationRepository.addLocation(payload.location)
+            payload.location = location
+        }
         return await this.characterRepository.addCharacter(payload)
     }
 

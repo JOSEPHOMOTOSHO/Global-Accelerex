@@ -14,7 +14,6 @@ export class characterRepository extends Repository<Character>{
             stateOfOrigin:payload.stateOfOrigin,
             gender:payload.gender,
             location:payload.location,
-            episodes:payload.episodes
         }
         try {
             const createdCharacter = this.create(character)
@@ -28,6 +27,7 @@ export class characterRepository extends Repository<Character>{
 
     async getAllCharacters(queryParms:GetCharactersQueryDto){
         const {sort,order,filter,filterValue} = queryParms
+        console.log(queryParms)
         try{
             let characters 
            if(sort && !filter){

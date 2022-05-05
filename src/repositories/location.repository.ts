@@ -13,6 +13,7 @@ export class LocationRepository extends Repository<Location>{
             latitude:payload.latitude,
             longitude:payload.longitude,
         }
+        console.log(location)
         try {
             const createdLocation= this.create(location)
             await this.save(createdLocation)
